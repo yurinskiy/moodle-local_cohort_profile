@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package   local_cohort-remove
+ * @package   local_cohort_profile
  * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Вывод глобальных групп в профиле';
-$string['hidden'] = 'Эта группа скрыта';
+$string['pluginname'] = 'Глобальные группы в профиле';
+$string['hidden'] = 'Эта глобальная группа скрыта';

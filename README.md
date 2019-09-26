@@ -1,3 +1,3 @@
-# Плагин для вывода глобальных групп (cohorts) в профиле пользователя
+# Local plugin "Cohorts in profile"
 
-Позволяет добавить в профиль пользователя секцию с информацией о глобальных группах, в которых он состоит.
+This plugin adds a section to the user profile with information about cohorts in which it is a member.
