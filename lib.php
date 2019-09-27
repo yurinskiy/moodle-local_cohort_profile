@@ -20,10 +20,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 const COHORTLIMIT = 10;
 
-function local_cohort_profile_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course)
-{
+function local_cohort_profile_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
     global $CFG, $DB;
     require_once($CFG->dirroot . '/cohort/lib.php');
 
