@@ -15,10 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Strings for component 'local_cohort_profile', language 'en'
+ *
  * @package   local_cohort_profile
  * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+
 $string['pluginname'] = 'Cohorts in profile';
 $string['hidden'] = 'The cohort is hidden';
