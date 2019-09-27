@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * This file contains the local_cohort_profile_myprofile_navigation function which is used to add information into the my profile page
+ *
  * @package   local_cohort_profile
  * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -22,8 +24,20 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-const COHORTLIMIT = 10;
+/**
+ * COHORTLIMIT - number of cohorts to be derived
+ */
+define('COHORTLIMIT', 10);
 
+/**
+ * To add the category and node information into the my profile page.
+ *
+ * @param core_user\output\myprofile\tree 	$tree The myprofile tree to add categories and nodes to.
+ * @param stdClass 							$user The user object that the profile page belongs to.
+ * @param bool 								$iscurrentuser If the $user object is the current user.
+ * @param stdClass 							$course The course to determine if we are in a course context or system context.
+ * @return void
+ */
 function local_cohort_profile_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
     global $CFG, $DB;
     require_once($CFG->dirroot . '/cohort/lib.php');
