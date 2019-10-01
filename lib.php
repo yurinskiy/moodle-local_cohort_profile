@@ -15,8 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains the local_cohort_profile_myprofile_navigation function 
- * which is used to add information into the my profile page
+ * This file contains the code for the plugin integration.
  *
  * @package   local_cohort_profile
  * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
