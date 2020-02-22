@@ -14,10 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Privacy Subsystem implementation for local_cohort_profile.
+ *
+ * @package   local_cohort_profile
+ * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 namespace local_cohort_profile\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
+ * Privacy Subsystem for local_cohort_profile implementing null_provider.
+ *
  * @package   local_cohort_profile
  * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
