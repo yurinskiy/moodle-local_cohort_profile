@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/yuriyyurinskiy/moodle-local_cohort_profile.svg?branch=master)](https://travis-ci.org/yuriyyurinskiy/moodle-local_cohort_profile)
-[![Build Status](https://travis-ci.org/yuriyyurinskiy/moodle-local_cohort_profile.svg?branch=developer)](https://travis-ci.org/yuriyyurinskiy/moodle-local_cohort_profile)
 
 # Local plugin "Cohorts in profile"
 
