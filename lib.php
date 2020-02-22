@@ -25,9 +25,9 @@
 defined('MOODLE_INTERNAL') || die;
 
 /**
- * COHORTLIMIT - number of cohorts to be derived
+ * LOCAL_COHORT_PROFILE_COHORT_LIMIT - number of cohorts to be derived
  */
-define('COHORTLIMIT', 10);
+define('LOCAL_COHORT_PROFILE_COHORT_LIMIT', 10);
 
 /**
  * To add the category and node information into the my profile page.
@@ -44,40 +44,43 @@ function local_cohort_profile_myprofile_navigation(core_user\output\myprofile\tr
 
     $showallcohorts = optional_param('showallcohorts', 0, PARAM_INT);
 
-    if (is_siteadmin()) {
-        $sql = 'SELECT c.*
-              FROM {cohort} c
+    $sql = 'SELECT %s FROM {cohort} c
               JOIN {cohort_members} cm ON c.id = cm.cohortid
              WHERE cm.userid = ?';
-        $cohorts = $DB->get_records_sql($sql, array($user->id));
+
+    if (!is_siteadmin()) {
+        $sql .= ' AND c.visible = 1';
+    }
+
+    if ($showallcohorts) {
+        $cohorts = $DB->get_records_sql(sprintf($sql, 'c.*'), array($user->id));
+        $countcohorts = count($cohorts);
     } else {
-        $cohorts = cohort_get_user_cohorts($user->id);
+        $cohorts = $DB->get_records_sql(sprintf($sql, 'c.*'), array($user->id), 0, LOCAL_COHORT_PROFILE_COHORT_LIMIT);
+        $countcohorts = $DB->count_records_sql(sprintf($sql, 'count(c.id)'), array($user->id));
     }
 
     if ($cohorts) {
         $cohortdetailscategory = new core_user\output\myprofile\category('cohortdetails', get_string('cohorts', 'core_cohort'));
         $tree->add_category($cohortdetailscategory);
 
-        $shown = 0;
-        $cohortslisting = '<dt>';
+        $cohortslisting = '';
+
         foreach ($cohorts as $cohort) {
             $attr = null;
-            if ($cohort->visible == 0) {
-                $attr['style'] = 'color: #999;';
+            if (0 == $cohort->visible) {
+                $attr['class'] = 'dimmed_text';
                 $attr['title'] = get_string('hidden', 'local_cohort_profile');
             }
             $cohortslisting .= html_writer::tag('dd', $cohort->name, $attr);
-
-            $shown++;
-            if (!$showallcohorts && $shown == COHORTLIMIT) {
-                $url = new moodle_url('/user/profile.php', array('id' => $user->id, 'showallcohorts' => 1));
-
-                $cohortslisting .= html_writer::tag('dd', html_writer::link($url, get_string('viewmore'),
-                    array('title' => get_string('viewmore'))), array('class' => 'viewmore'));
-                break;
-            }
         }
-        $cohortslisting .= '</dt>';
+
+        if (!$showallcohorts && $countcohorts > count($cohorts)) {
+            $url = new moodle_url('/user/profile.php', array('id' => $user->id, 'showallcohorts' => 1));
+
+            $cohortslisting .= html_writer::tag('dd', html_writer::link($url, get_string('viewmore'),
+                    array('title' => get_string('viewmore'))), array('class' => 'viewmore'));
+        }
 
         $node = new core_user\output\myprofile\node('cohortdetails', 'cohortprofile', $cohortslisting);
         $tree->add_node($node);
