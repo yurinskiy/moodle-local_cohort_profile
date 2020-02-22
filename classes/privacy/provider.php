@@ -14,15 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace local_cohort_profile\privacy;
+defined('MOODLE_INTERNAL') || die();
+
 /**
- * Strings for component 'local_cohort_profile', language 'ru'
- *
  * @package   local_cohort_profile
  * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-$string['pluginname'] = 'Глобальные группы в профиле';
-$string['hidden'] = 'Эта глобальная группа скрыта';
-
-$string['privacy:metadata']  = 'Плагин Глобальные группы в профиле не хранит никаких персональных данных.';
+class provider implements \core_privacy\local\metadata\null_provider {
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}

@@ -18,7 +18,7 @@
  * This file contains the code for the plugin integration.
  *
  * @package   local_cohort_profile
- * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
+ * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
