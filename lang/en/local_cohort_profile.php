@@ -18,9 +18,11 @@
  * Strings for component 'local_cohort_profile', language 'en'
  *
  * @package   local_cohort_profile
- * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
+ * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['pluginname'] = 'Cohorts in profile';
 $string['hidden'] = 'The cohort is hidden';
+
+$string['privacy:metadata']  = 'The Cohorts in profile plugin does not store any personal data.';

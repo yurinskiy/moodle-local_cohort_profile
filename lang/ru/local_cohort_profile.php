@@ -18,9 +18,11 @@
  * Strings for component 'local_cohort_profile', language 'ru'
  *
  * @package   local_cohort_profile
- * @copyright 2019, YuriyYurinskiy <yuriyyurinskiy@yandex.ru>
+ * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['pluginname'] = 'Глобальные группы в профиле';
 $string['hidden'] = 'Эта глобальная группа скрыта';
+
+$string['privacy:metadata']  = 'Плагин Глобальные группы в профиле не хранит никаких персональных данных.';

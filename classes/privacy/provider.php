@@ -15,17 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Privacy Subsystem implementation for local_cohort_profile.
  *
  * @package   local_cohort_profile
  * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+namespace local_cohort_profile\privacy;
 
-$plugin->version   = 2020022200;
-$plugin->requires  = 2018120300;
-$plugin->component = 'local_cohort_profile';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.0.5';
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Privacy Subsystem for local_cohort_profile implementing null_provider.
+ *
+ * @package   local_cohort_profile
+ * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
