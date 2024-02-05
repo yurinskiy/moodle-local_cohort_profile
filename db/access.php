@@ -18,14 +18,20 @@
  * Version details.
  *
  * @package   local_cohort_profile
- * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
+ * @copyright 2024, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2020022201;
-$plugin->requires  = 2018120300;
-$plugin->component = 'local_cohort_profile';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.0.5';
+$capabilities = array(
+    'local/cohort_profile:view_cohort_list' => array(
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_USER,
+        'archetypes' => array(
+            'teacher' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW,
+        ),
+    ),
+);
