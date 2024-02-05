@@ -18,7 +18,7 @@
  * This file contains the code for the plugin integration.
  *
  * @package   local_cohort_profile
- * @copyright 2019, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
+ * @copyright 2024, Yuriy Yurinskiy <yuriyyurinskiy@yandex.ru>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,8 +39,18 @@ define('LOCAL_COHORT_PROFILE_COHORT_LIMIT', 10);
  * @return void
  */
 function local_cohort_profile_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
-    global $CFG, $DB;
+    global $CFG, $DB, $USER;
     require_once($CFG->dirroot . '/cohort/lib.php');
+
+    $context = context_user::instance($user->id);
+
+    $hascapability = has_capability('local/cohort_profile:view_cohort_list', $context);
+    $ownprofile = $user->id == $USER->id;
+
+    # Don't show if user doesn't have capability or is not viewing their own profile
+    if (!$hascapability && !$ownprofile) {
+      return;
+    }
 
     $showallcohorts = optional_param('showallcohorts', 0, PARAM_INT);
 
